@@ -1,0 +1,16 @@
+[
+{
+  "modid": "accesstweaks",
+  "name": "Accessibility tweaks",
+  "description": "Tweaks to improve accessibility and usability.",
+  "version": "1.0-mc1.11",
+  "mcversion": "1.11",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Jazzable"],
+  "credits": "By Jazzable",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
