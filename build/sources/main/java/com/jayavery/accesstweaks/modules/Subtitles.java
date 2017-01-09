@@ -48,7 +48,7 @@ public class Subtitles extends GuiSubtitleOverlay {
     }    
     @Override
     public void soundPlay(ISound sound, SoundEventAccessor accessor) {
-        System.out.println("adding subtitle");
+
         if (accessor.getSubtitle() == null) {
             
             return;

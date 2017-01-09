@@ -43,7 +43,6 @@ public class Particles extends RenderGlobal {
     @Override
     public void drawBlockDamageTexture(Tessellator tessellator, VertexBuffer worldRenderer, Entity entity, float ticks) {
         
-       // this.onResourceManagerReload(null);
         super.drawBlockDamageTexture(tessellator, worldRenderer, entity, ticks);
     }
     

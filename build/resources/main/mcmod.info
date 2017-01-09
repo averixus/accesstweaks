@@ -1,14 +1,14 @@
 [
 {
   "modid": "accesstweaks",
-  "name": "Accessibility tweaks",
+  "name": "AccessTweaks",
   "description": "Tweaks to improve accessibility and usability.",
   "version": "1.0-mc1.11",
   "mcversion": "1.11",
-  "url": "",
+  "url": "https://github.com/JayAvery/accesstweaks",
   "updateUrl": "",
-  "authorList": ["Jazzable"],
-  "credits": "By Jazzable",
+  "authorList": ["Jay Avery"],
+  "credits": "By Jay Avery",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

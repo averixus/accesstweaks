@@ -19,9 +19,7 @@ public class Myself {
             
             return;
         }
-        
-        System.out.println("playing sound at myself " + event.getSound().getSoundName());
-        
+                
         if (!myself) {
             
             event.setCanceled(true);

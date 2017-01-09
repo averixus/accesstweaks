@@ -28,7 +28,7 @@ public class Sounds {
     
     @SubscribeEvent
     public void playSound(PlaySoundEvent event) {
-        System.out.println("play sound event");
+
         ISound sound = event.getSound();
         String name = event.getSound().getSoundLocation().toString();
         boolean playSound = true;
