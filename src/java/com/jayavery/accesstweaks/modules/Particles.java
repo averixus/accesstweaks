@@ -53,7 +53,7 @@ public class Particles extends RenderGlobal {
         
         if (allowed.contains(particleID)) {
         
-            this.func_190570_a(particleID, ignoreRange, false, xCoord, yCoord,
+            super.spawnParticle(particleID, ignoreRange, xCoord, yCoord,
                     zCoord, xSpeed, ySpeed, zSpeed, parameters);
         }
     }
