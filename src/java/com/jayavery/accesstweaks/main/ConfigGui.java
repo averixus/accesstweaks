@@ -2,6 +2,7 @@ package com.jayavery.accesstweaks.main;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.jayavery.accesstweaks.modules.Maxbright;
 import com.jayavery.accesstweaks.modules.Myself;
 import com.jayavery.accesstweaks.modules.Particles;
 import com.jayavery.accesstweaks.modules.Portals;
@@ -31,6 +32,7 @@ public class ConfigGui extends GuiConfig {
         result.add(getChildren(Sounds.CONFIG_SOUNDS, "Sounds"));
         result.add(getChildren(Myself.CONFIG_MYSELF,
                 "My player sounds and subtitles"));
+        result.add(getChildren(Maxbright.CONFIG_MAXBRIGHT, "Max Brightness"));
         
         return result;
     }

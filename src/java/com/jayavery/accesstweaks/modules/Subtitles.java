@@ -45,7 +45,8 @@ public class Subtitles extends GuiSubtitleOverlay {
             event.setCanceled(true);
             this.renderSubtitles(event.getResolution());
         }        
-    }    
+    }
+    
     @Override
     public void soundPlay(ISound sound, SoundEventAccessor accessor) {
 

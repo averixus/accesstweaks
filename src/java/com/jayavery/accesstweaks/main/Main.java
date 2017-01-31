@@ -1,13 +1,14 @@
 package com.jayavery.accesstweaks.main;
 
 import com.jayavery.accesstweaks.modules.Myself;
+import com.jayavery.accesstweaks.modules.Maxbright;
 import com.jayavery.accesstweaks.modules.Particles;
 import com.jayavery.accesstweaks.modules.Portals;
 import com.jayavery.accesstweaks.modules.Sounds;
 import com.jayavery.accesstweaks.modules.Subtitles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.IReloadableResourceManager;
-import net.minecraft.client.resources.IResourceManagerReloadListener;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -38,6 +39,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
     public static Particles PARTICLES;
     public static final Sounds SOUNDS = new Sounds();
     public static final Myself MYSELF = new Myself();
+    public static final Maxbright NETHERBRIGHT = new Maxbright();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -55,7 +57,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
         MinecraftForge.EVENT_BUS.register(SOUNDS);
         MinecraftForge.EVENT_BUS.register(MYSELF);
         MinecraftForge.EVENT_BUS.register(SUBTITLES);
-
+        MinecraftForge.EVENT_BUS.register(NETHERBRIGHT);
+        
         FMLCommonHandler.instance().bus().register(instance);
     }
 
@@ -67,6 +70,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
         ((IReloadableResourceManager) Minecraft.getMinecraft()
                 .getResourceManager()).registerReloadListener(PARTICLES);
         PARTICLES.onResourceManagerReload(null);
+        
         
     }
 
@@ -86,6 +90,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
         Particles.syncConfig();
         Portals.syncConfig();
         Sounds.syncConfig();
+        Maxbright.syncConfig();
         
         if (config.hasChanged()) {
 
