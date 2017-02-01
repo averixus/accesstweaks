@@ -2,6 +2,7 @@ package com.jayavery.accesstweaks.modules;
 
 import java.util.HashSet;
 import java.util.Set;
+import com.google.common.collect.Sets;
 import com.jayavery.accesstweaks.main.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderGlobal;
@@ -12,36 +13,14 @@ import net.minecraft.util.EnumParticleTypes;
 
 public class Particles extends RenderGlobal {
     
-    public static final String CONFIG_PARTICLES = "particles";
-    
-    // Reference sets
-    public static final int[] EXPLOSIONS = new int[] {0, 1, 2, 3};
-    public static final int[] WATER = new int[] {4, 5, 6, 7, 8, 39};
-    public static final int[] MAGIC = new int[]
-            {10, 13, 14, 15, 16, 17, 42, 47};
-    public static final int[] COMBAT = new int[] {9, 44, 45, 48};
-    public static final int[] DRIPS = new int[] {18, 19};
-    public static final int[] VILLAGERS = new int[] {20, 21};
-    public static final int[] MYCELIUM = new int[] {22};
-    public static final int[] NOTES = new int[] {23};
-    public static final int[] PORTALS = new int[] {24};
-    public static final int[] GLYPHS = new int[] {25};
-    public static final int[] FIRE = new int[] {11, 12, 26, 27, 43};
-    public static final int[] REDSTONE = new int[] {30};
-    public static final int[] SLIME = new int[] {33};
-    public static final int[] HEARTS = new int[] {34};
-    public static final int[] BLOCKS = new int[] {37, 38};
-    public static final int[] ITEMS = new int[] {36};
-    
-    public static Set<Integer> allowed;
-    
     public Particles() {
         
         super(Minecraft.getMinecraft());
     }
     
     @Override
-    public void drawBlockDamageTexture(Tessellator tessellator, VertexBuffer worldRenderer, Entity entity, float ticks) {
+    public void drawBlockDamageTexture(Tessellator tessellator,
+            VertexBuffer worldRenderer, Entity entity, float ticks) {
         
         super.drawBlockDamageTexture(tessellator, worldRenderer, entity, ticks);
     }
@@ -58,141 +37,54 @@ public class Particles extends RenderGlobal {
         }
     }
     
-    public static void syncConfig() {
+    public static enum ParticleSet {
         
-        allowed = new HashSet<Integer>();
+        EXPLOSIONS("explosions", 0, 1, 2, 3), WATER("water", 4, 5, 6, 7, 8, 39),
+        MAGIC("magic", 10, 13, 14, 15, 16, 17, 42, 47),
+        COMBAT("combat", 9, 44, 45, 48), DRIPS("drips", 18, 19),
+        VILLAGERS("villagers", 20, 21), MYCELIUM("mycelium", 22),
+        NOTES("notes", 23), PORTALS("portals", 24), GLYPHS("glyphs", 25),
+        FIRE("fire", 11, 12, 26, 27, 43), REDSTONE("redstone", 30),
+        SLIME("slime", 33), HEARTS("hearts", 34),
+        BLOCKS("blocks", 37, 38), ITEMS("items", 36);
         
-        if (readConfig("explosions")) {
+        private int[] values;
+        private String name;
+        
+        private ParticleSet(String name, int... values) {
             
-            for (int id : EXPLOSIONS) {
-                
-                allowed.add(id);
-            }
+            this.values = values;
+            this.name = name;
         }
         
-        if (readConfig("water")) {
+        @Override
+        public String toString() {
             
-            for (int id : WATER) {
-                
-                allowed.add(id);
-            }
+            return this.name;
         }
         
-        if (readConfig("magic")) {
+        public int[] getValues() {
             
-            for (int id : MAGIC) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("combat")) {
-            
-            for (int id : COMBAT) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("drips")) {
-            
-            for (int id : DRIPS) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("villagers")) {
-            
-            for (int id : VILLAGERS) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("mycelium")) {
-            
-            for (int id : MYCELIUM) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("notes")) {
-            
-            for (int id : NOTES) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("portals")) {
-            
-            for (int id : PORTALS) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("glyphs")) {
-            
-            for (int id : GLYPHS) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("fire")) {
-            
-            for (int id : FIRE) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("redstone")) {
-            
-            for (int id : REDSTONE) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("slime")) {
-            
-            for (int id : SLIME) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("hearts")) {
-            
-            for (int id : HEARTS) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("blocks")) {
-            
-            for (int id : BLOCKS) {
-                
-                allowed.add(id);
-            }
-        }
-        
-        if (readConfig("items")) {
-            
-            for (int id : ITEMS) {
-                
-                allowed.add(id);
-            }
+            return this.values;
         }
     }
     
-    private static boolean readConfig(String name) {
+    private static Set<Integer> allowed = Sets.newHashSet();
+    
+    public static final String CONFIG_PARTICLES = "particles";
+    
+    public static void syncConfig() {
         
-        return Main.config.get(CONFIG_PARTICLES, name, true).getBoolean();
+        for (ParticleSet set : ParticleSet.values()) {
+            
+            if (Main.config.get(CONFIG_PARTICLES, set.toString(), true)
+                    .getBoolean()) {
+                
+                for (int id : set.getValues()) {
+                    
+                    allowed.add(id);
+                }
+            }
+        }
     }
 }

@@ -3,11 +3,9 @@ package com.jayavery.accesstweaks.main;
 import java.util.ArrayList;
 import java.util.List;
 import com.jayavery.accesstweaks.modules.Maxbright;
-import com.jayavery.accesstweaks.modules.Myself;
 import com.jayavery.accesstweaks.modules.Particles;
 import com.jayavery.accesstweaks.modules.Portals;
 import com.jayavery.accesstweaks.modules.Sounds;
-import com.jayavery.accesstweaks.modules.Subtitles;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.fml.client.config.DummyConfigElement;
@@ -26,12 +24,9 @@ public class ConfigGui extends GuiConfig {
         
         List<IConfigElement> result = new ArrayList<IConfigElement>();
   
-        result.add(getChildren(Subtitles.CONFIG_SUBTITLES, "Subtitles"));
         result.add(getChildren(Portals.CONFIG_PORTALS, "Nether portals"));
         result.add(getChildren(Particles.CONFIG_PARTICLES, "Particles"));
         result.add(getChildren(Sounds.CONFIG_SOUNDS, "Sounds"));
-        result.add(getChildren(Myself.CONFIG_MYSELF,
-                "My player sounds and subtitles"));
         result.add(getChildren(Maxbright.CONFIG_MAXBRIGHT, "Max Brightness"));
         
         return result;

@@ -2,7 +2,7 @@ version:819
 invertYMouse:false
 mouseSensitivity:0.5
 fov:0.0
-gamma:0.0
+gamma:100.0
 saturation:0.0
 renderDistance:12
 guiScale:0
@@ -47,7 +47,7 @@ useNativeTransport:true
 entityShadows:true
 mainHand:right
 attackIndicator:1
-showSubtitles:false
+showSubtitles:true
 realmsNotifications:true
 enableWeakAttacks:false
 autoJump:true
@@ -81,7 +81,7 @@ key_key.hotbar.6:7
 key_key.hotbar.7:8
 key_key.hotbar.8:9
 key_key.hotbar.9:10
-soundCategory_master:1.0
+soundCategory_master:0.0
 soundCategory_music:1.0
 soundCategory_record:1.0
 soundCategory_weather:1.0
