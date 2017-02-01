@@ -26,7 +26,7 @@ public class ConfigGui extends GuiConfig {
   
         result.add(getChildren(Portals.CONFIG_PORTALS, "Nether portals"));
         result.add(getChildren(Particles.CONFIG_PARTICLES, "Particles"));
-        result.add(getChildren(Sounds.CONFIG_SOUNDS, "Sounds"));
+        result.add(getChildren(Sounds.CONFIG_SOUNDS, "Sounds and Subtitles"));
         result.add(getChildren(Maxbright.CONFIG_MAXBRIGHT, "Max Brightness"));
         
         return result;

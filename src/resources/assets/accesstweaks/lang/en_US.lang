@@ -1,58 +1,7 @@
-Subtitles.tooltip=
 Nether portals.tooltip=
 Particles.tooltip=
-Sounds.tooltip=
-My player sounds and subtitles.tooltip=
+Sounds and Subtitles.tooltip=
 Max Brightness.tooltip=
-
-showEnvironment=Show subtitles for environment sounds
-showEnvironment.tooltip=Weather, ambient and cave sounds.
-showMachines=Show subtitles for machine sounds
-showMachines.tooltip=Minecarts and redstone contraptions.
-showWater=Show subtitles for water sounds
-showWater.tooltip=Swimming, splashing, and flowing sounds.
-showFire=Show subtitles for fire sounds
-showFire.tooltip=Fire and lava sounds.
-showEntityCombat=Show subtitles for combat sounds
-showEntityCombat.tooltip=Entity injury, attack, and death sounds.
-showEntityAmbient=Show subtitles for ambient entity sounds
-showEntityAmbient.tooltip=Neutral and ambient entity sounds.
-showBlocks=Show subtitles for block sounds
-showBlocks.tooltip=Block breaking and placing sounds.
-showActions=Show subtitles for general action sounds
-showActions.tooltip=Sounds of using blocks, tools, items, etc.
-showMovement=Show subtitles for entity movement sounds
-showMovement.tooltip=Walking, jumping, and other entity movement sounds.
-configShowAlways=[Optional] Subtitles to always show
-configShowAlways.tooltip=Overrides any category settings below. Interpreted as Java regular expressions and checked against the subtitle name or text.
-configShowNever=[Optional] Subtitles to always hide
-configShowNever.tooltip=Overrides any category settings below. Interpreted as Java regular expressions and checked against the subtitle name or text.
-
-playEnvironment=Play environment sounds
-playEnvironment.tooltip=Weather, ambient and cave sounds.
-playMachines=Play machine sounds
-playMachines.tooltip=Minecarts and redstone contraptions.
-playWater=Play water sounds
-playWater.tooltip=Swimming, splashing, and flowing sounds.
-playFire=Play fire sounds
-playFire.tooltip=Fire and lava sounds.
-playEntityCombat=Play combat sounds
-playEntityCombat.tooltip=Entity injury, attack, and death sounds.
-playEntityAmbient=Play ambient entity sounds
-playEntityAmbient.tooltip=Neutral and ambient entity sounds.
-playBlocks=Play block sounds
-playBlocks.tooltip=Block breaking and placing sounds.
-playActions=Play general action sounds
-playActions.tooltip=Sounds of using blocks, tools, items, etc.
-playMovement=Play entity movement sounds
-playMovement.tooltip=Walking, jumping, and other entity movement sounds.
-configPlayAlways=[Optional] Sounds to always play
-configPlayAlways.tooltip=Overrides any category settings below. Interpreted as Java regular expressions and checked against the subtitle name or text.
-configPlayNever=[Optional] Sounds to always mute
-configPlayNever.tooltip=Overrides any category settings below. Interpreted as Java regular expressions and checked against the subtitle name or text.
-
-myself=Allow sounds and subtitles created by my player.
-myself.tooltip=This overrides any other subtitles and sounds settings.
 
 portalEffects=Allow nether portal visual effects
 portalEffects.tooltip='Nausea' screen wobble and portal image overlay.
@@ -92,3 +41,32 @@ items.tooltip=When food items are eaten.
 
 maxbright=Make all dimensions max brightness
 maxbright.tooltip=Overrides normal brightness setting.
+
+me+result=My sounds
+me+result.tooltip=Sounds from my player only.
+me_colour=My sounds subtitle colour
+me_colour.tooltip=Use RGB hex colour codes, e.g.: Red = FF0000, Green = 00FF00, Blue = 0000FF
+player+result=Other player sounds
+player+result.tooltip=Sounds from players other than me.
+player_colour=Other player sounds subtitle colour
+player_colour.tooltip=Use RGB hex colour codes, e.g.: Red = FF0000, Green = 00FF00, Blue = 0000FF
+hostile+result=Hostile mob sounds
+hostile+result.tooltip=Sounds from hostile (enemy) mobs.
+hostile_colour=Hostile mob sounds subtitle colour
+hostile_colour.tooltip=Use RGB hex colour codes, e.g.: Red = FF0000, Green = 00FF00, Blue = 0000FF
+passive+result=Passive mob sounds
+passive+result.tooltip=Sounds from passive (friendly or neutral) mobs.
+passive_colour=Passive mob subtitle colour
+passive_colour.tooltip=Use RGB hex colour codes, e.g.: Red = FF0000, Green = 00FF00, Blue = 0000FF
+machine+result=Machinery sounds
+machine+result.tooltip=Sounds from redstone devices and minecarts.
+machine_colour=Machinery sounds subtitle colour
+machine_colour.tooltip=Use RGB hex colour codes, e.g.: Red = FF0000, Green = 00FF00, Blue = 0000FF
+ambient+result=Ambient sounds
+ambient+result.tooltip=Weather and ambient block sounds.
+ambient_colour=Ambient sounds subtitle colour
+ambient_colour.tooltip=Use RGB hex colour codes, e.g.: Red = FF0000, Green = 00FF00, Blue = 0000FF
+action+result=Action sounds
+action+result.tooltip=Sounds of using or activating items and blocks.
+action_colour=Action sounds subtitle colour
+action_colour.tooltip=Use RGB hex colour codes, e.g.: Red = FF0000, Green = 00FF00, Blue = 0000FF

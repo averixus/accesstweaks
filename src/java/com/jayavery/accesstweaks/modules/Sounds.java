@@ -213,18 +213,18 @@ public class Sounds {
             try {
                 
                 categoryResults.put(category, new SoundResult(Main.config
-                        .get(CONFIG_SOUNDS, category + "result", "Sound Only",
+                        .get(CONFIG_SOUNDS, category + "+result", "Sound Only",
                         "", ResultType.stringMap.keySet().toArray(new
                         String[ResultType.stringMap.size()])).getString(),
                         Integer.parseInt(Main.config.get(CONFIG_SOUNDS,
-                        category + "colour", "FFFFFF").getString(), 16)));
+                        category + "_colour", "FFFFFF").getString(), 16)));
         
             } catch (NumberFormatException ex) {
                 
                 System.err.println("\"" + Main.config.get(CONFIG_SOUNDS,
-                        category + "colour", "FFFFFF").getString() +
+                        category + "_colour", "FFFFFF").getString() +
                         "\" is not a valid Hex colour, resetting to default.");
-                Main.config.get(CONFIG_SOUNDS, category + "colour", "FFFFFF")
+                Main.config.get(CONFIG_SOUNDS, category + "_colour", "FFFFFF")
                         .setToDefault();
             }
         }
