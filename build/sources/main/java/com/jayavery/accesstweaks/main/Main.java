@@ -1,13 +1,11 @@
 package com.jayavery.accesstweaks.main;
 
-import com.jayavery.accesstweaks.modules.Myself;
+import com.jayavery.accesstweaks.modules.Maxbright;
 import com.jayavery.accesstweaks.modules.Particles;
 import com.jayavery.accesstweaks.modules.Portals;
 import com.jayavery.accesstweaks.modules.Sounds;
-import com.jayavery.accesstweaks.modules.Subtitles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.IReloadableResourceManager;
-import net.minecraft.client.resources.IResourceManagerReloadListener;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -33,11 +31,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
     public static Configuration config;
 
-    public static Subtitles SUBTITLES;
     public static final Portals PORTALS = new Portals();
     public static Particles PARTICLES;
     public static final Sounds SOUNDS = new Sounds();
-    public static final Myself MYSELF = new Myself();
+    public static final Maxbright NETHERBRIGHT = new Maxbright();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -48,14 +45,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-
-        SUBTITLES = new Subtitles(Minecraft.getMinecraft());
         
         MinecraftForge.EVENT_BUS.register(PORTALS);
         MinecraftForge.EVENT_BUS.register(SOUNDS);
-        MinecraftForge.EVENT_BUS.register(MYSELF);
-        MinecraftForge.EVENT_BUS.register(SUBTITLES);
-
+        MinecraftForge.EVENT_BUS.register(NETHERBRIGHT);
+        
         FMLCommonHandler.instance().bus().register(instance);
     }
 
@@ -67,7 +61,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
         ((IReloadableResourceManager) Minecraft.getMinecraft()
                 .getResourceManager()).registerReloadListener(PARTICLES);
         PARTICLES.onResourceManagerReload(null);
-        
     }
 
     @SubscribeEvent
@@ -80,13 +73,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
     }
 
     public static void syncConfig() {
-        
-        Subtitles.syncConfig();
-        Myself.syncConfig();
+
         Particles.syncConfig();
         Portals.syncConfig();
         Sounds.syncConfig();
-        
+        Maxbright.syncConfig();
+                
         if (config.hasChanged()) {
 
             config.save();

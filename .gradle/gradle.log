@@ -1,7 +1,7 @@
 This mapping 'snapshot_20161111' was designed for MC 1.10.2! Use at your own peril.This mapping 'snapshot_20161111' was designed for MC 1.10.2! Use at your own peril.
 
 #################################################
-         ForgeGradle 2.2-SNAPSHOT-e77786c        
+         ForgeGradle 2.2-SNAPSHOT-59eb824        
   https://github.com/MinecraftForge/ForgeGradle  
 #################################################
                Powered by MCP unknown               
@@ -10,44 +10,40 @@ This mapping 'snapshot_20161111' was designed for MC 1.10.2! Use at your own per
          R4wk, ZeuX, IngisKahn, bspkrs           
 #################################################
 :deobfCompileDummyTask
-:getVersionJson
-:extractUserdev
-:downloadClient SKIPPED
-:downloadServer SKIPPED
-:splitServerJar SKIPPED
-:mergeJars SKIPPED
-:applyBinaryPatches
 :deobfProvidedDummyTask
-:extractDependencyATs SKIPPED
-:extractMcpData SKIPPED
-:extractMcpMappings
-:genSrgs
-:deobfMcMCP
-Applying SpecialSource...
-Applying Exceptor...
-:sourceApiJava
+:sourceApiJava UP-TO-DATE
 :compileApiJava UP-TO-DATE
 :processApiResources UP-TO-DATE
 :apiClasses UP-TO-DATE
-:sourceMainJava
+:sourceMainJava UP-TO-DATE
 :compileJavawarning: [options] bootstrap class path not set in conjunction with -source 1.6
-Note: C:\Users\JayAvery\Documents\Me\Minecraft\Modding\accesstweaks\accesstweaks\build\sources\main\java\com\jayavery\accesstweaks\main\Main.java uses or overrides a deprecated API.
+Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 1 warning
 
-:processResources
+:processResources UP-TO-DATE
 :classes
 :jar
-:sourceTestJava
+:sourceTestJava UP-TO-DATE
 :compileTestJava UP-TO-DATE
 :processTestResources UP-TO-DATE
 :testClasses UP-TO-DATE
 :test UP-TO-DATE
+:extractMcpData SKIPPED
+:extractMcpMappings SKIPPED
+:getVersionJson
+:extractUserdev UP-TO-DATE
+:genSrgs SKIPPED
 :reobfJar
+:extractRangemapReplacedMain
+/Users/jayavery/Documents/Me/Minecraft/Modding/accesstweaks/accesstweaks/build/sources/main/java
+:retromapReplacedMain
+remapping source...
+:sourceJar
 :assemble
 :check UP-TO-DATE
 :build
 
 BUILD SUCCESSFUL
 
-Total time: 1 mins 52.755 secs
+Total time: 17.097 secs

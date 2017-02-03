@@ -7,9 +7,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class Portals {
     
-    public static final String CONFIG_PORTALS = "portals";
-    
-    public static boolean portalEffects = true;
 
     @SubscribeEvent
     public void playerTick(PlayerTickEvent event) {
@@ -29,6 +26,10 @@ public class Portals {
             }
         }
     }
+    
+    public static boolean portalEffects = true;
+    
+    public static final String CONFIG_PORTALS = "portals";
     
     public static void syncConfig() {
         
