@@ -12,8 +12,12 @@ public class Maxbright {
     
     @SubscribeEvent
     public void changeDimension(PlayerChangedDimensionEvent event) {
+
+        updateBrightness(event.toDim);
+    }
+    
+    private static void updateBrightness(int id) {
         
-        int id = event.toDim;
         GameSettings settings = Minecraft.getMinecraft().gameSettings;
         
         if (id == -1) {
@@ -65,5 +69,10 @@ public class Maxbright {
                 .getBoolean();
         overworldBright = Main.config.get(CONFIG_MAXBRIGHT, "overworldBright",
                 false).getBoolean();
+        
+        if (Minecraft.getMinecraft().player != null) {
+        
+            updateBrightness(Minecraft.getMinecraft().player.dimension);
+        }
     }
 }
