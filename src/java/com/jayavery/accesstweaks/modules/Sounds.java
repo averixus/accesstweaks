@@ -37,8 +37,8 @@ public class Sounds {
         
         SoundCategory category;
         
-        if (Minecraft.getMinecraft().thePlayer != null &&
-                entity == Minecraft.getMinecraft().thePlayer) {
+        if (Minecraft.getMinecraft().player != null &&
+                entity == Minecraft.getMinecraft().player) {
             
             category = SoundCategory.ME;
             

@@ -39,8 +39,12 @@ blocks.tooltip=When blocks and static entities are destroyed.
 items=Show food particles
 items.tooltip=When food items are eaten.
 
-maxbright=Make all dimensions max brightness
-maxbright.tooltip=Overrides normal brightness setting.
+netherBright=Make the Nether max brightness
+netherBright.tooltip=Overrides normal brightness setting.
+endBright=Make the End max brightness
+endBright.tooltip=Overrides normal brightness setting.
+overworldBright=Make the Overworld max brightness
+overworldBright.tooltip=Overrides normal brightness setting.
 
 me+result=My sounds
 me+result.tooltip=Sounds from my player only.

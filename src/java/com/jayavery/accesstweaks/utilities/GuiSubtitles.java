@@ -64,16 +64,16 @@ public class GuiSubtitles extends Gui {
                     GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
                     GlStateManager.SourceFactor.ONE,
                     GlStateManager.DestFactor.ZERO);
-            Vec3d vec3d = new Vec3d(this.minecraft.thePlayer.posX,
-                    this.minecraft.thePlayer.posY + this.minecraft.thePlayer
-                    .getEyeHeight(), this.minecraft.thePlayer.posZ);
+            Vec3d vec3d = new Vec3d(this.minecraft.player.posX,
+                    this.minecraft.player.posY + this.minecraft.player
+                    .getEyeHeight(), this.minecraft.player.posZ);
             Vec3d vec3d1 = (new Vec3d(0.0D, 0.0D, -1.0D)).rotatePitch(
-                    -this.minecraft.thePlayer.rotationPitch * 0.017453292F)
-                    .rotateYaw(-this.minecraft.thePlayer.rotationYaw *
+                    -this.minecraft.player.rotationPitch * 0.017453292F)
+                    .rotateYaw(-this.minecraft.player.rotationYaw *
                     0.017453292F);
             Vec3d vec3d2 = (new Vec3d(0.0D, 1.0D, 0.0D)).rotatePitch(
-                    -this.minecraft.thePlayer.rotationPitch * 0.017453292F)
-                    .rotateYaw(-this.minecraft.thePlayer.rotationYaw *
+                    -this.minecraft.player.rotationPitch * 0.017453292F)
+                    .rotateYaw(-this.minecraft.player.rotationYaw *
                     0.017453292F);
             Vec3d vec3d3 = vec3d1.crossProduct(vec3d2);
             int i = 0;
@@ -116,11 +116,11 @@ public class GuiSubtitles extends Gui {
                 int i1 = this.minecraft.fontRendererObj.FONT_HEIGHT;
                 int j1 = i1 / 2;
                 int k1 = this.minecraft.fontRendererObj.getStringWidth(text);
-                
+
                 // Set alpha
-                int l1 = MathHelper.floor_double(MathHelper.denormalizeClamp(
-                        255.0D, 75.0D, (Minecraft.getSystemTime() - subtitle
-                        .getStartTime()) / 3000.0F));
+                int l1 = MathHelper.floor(MathHelper.clampedLerp(255.0D, 75.0D,
+                        (Minecraft.getSystemTime() - subtitle.getStartTime()) /
+                        3000.0F));
                 int i2 = l1 << 24;
 
                 GlStateManager.pushMatrix();
