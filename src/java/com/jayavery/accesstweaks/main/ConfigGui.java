@@ -16,10 +16,12 @@ public class ConfigGui extends GuiConfig {
 
     public ConfigGui(GuiScreen parentScreen) {
         
-        super(parentScreen, getConfigElements(), Main.MODID, false, false,
-                GuiConfig.getAbridgedConfigPath(Main.config.toString()));
+        super(parentScreen, getConfigElements(), Accesstweaks.MODID,
+                false, false, GuiConfig.getAbridgedConfigPath(
+                Accesstweaks.config.toString()));
     }
     
+    /** Constructs a list of all config elements needed for the gui. */
     private static List<IConfigElement> getConfigElements() {
         
         List<IConfigElement> result = new ArrayList<IConfigElement>();
@@ -32,10 +34,11 @@ public class ConfigGui extends GuiConfig {
         return result;
     }
     
+    /** Gets the sub elements for a config category. */
     private static IConfigElement getChildren(String category, String name) {
         
         return new DummyConfigElement.DummyCategoryElement(name, name,
-                new ConfigElement(Main.config.getCategory(category))
+                new ConfigElement(Accesstweaks.config.getCategory(category))
                 .getChildElements());
     }
 }

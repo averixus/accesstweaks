@@ -1,30 +1,43 @@
 package com.jayavery.accesstweaks.modules;
 
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.Set;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import com.jayavery.accesstweaks.main.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderGlobal;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraftforge.common.config.Configuration;
 
+/** Module to control display of particles by type. */
 public class Particles extends RenderGlobal {
+    
+    /** Set to store all particles currently allowed to display. */
+    private static Set<Integer> allowed = Sets.newHashSet();
+    
+    /** Config key for this module. */
+    public static final String CONFIG_PARTICLES = "particles";
     
     public Particles() {
         
         super(Minecraft.getMinecraft());
     }
     
-    @Override
-    public void drawBlockDamageTexture(Tessellator tessellator,
-            VertexBuffer worldRenderer, Entity entity, float ticks) {
+    /** Updates the settings of this module from the config. */
+    public static void syncConfig(Configuration config) {
         
-        super.drawBlockDamageTexture(tessellator, worldRenderer, entity, ticks);
+        allowed.clear();
+        
+        for (ParticleGroup group : ParticleGroup.values()) {
+            
+            if (config.get(CONFIG_PARTICLES, group.getName(), true)
+                    .getBoolean()) {
+                
+                allowed.addAll(group.getValues());
+            }
+        }
     }
     
+    /** Spawns a particle only if it is in the allowed set. */
     @Override
     public void spawnParticle(int particleID, boolean ignoreRange,
             double xCoord, double yCoord, double zCoord, double xSpeed,
@@ -37,7 +50,8 @@ public class Particles extends RenderGlobal {
         }
     }
     
-    public static enum ParticleSet {
+    /** Enum defining groups of particles for config settings. */
+    public static enum ParticleGroup {
         
         EXPLOSIONS("explosions", 0, 1, 2, 3), WATER("water", 4, 5, 6, 7, 8, 39),
         MAGIC("magic", 10, 13, 14, 15, 16, 17, 42, 47),
@@ -48,43 +62,23 @@ public class Particles extends RenderGlobal {
         SLIME("slime", 33), HEARTS("hearts", 34),
         BLOCKS("blocks", 37, 38), ITEMS("items", 36);
         
-        private int[] values;
-        private String name;
+        private final Collection<Integer> values;
+        private final String name;
         
-        private ParticleSet(String name, int... values) {
+        private ParticleGroup(String name, Integer... values) {
             
-            this.values = values;
+            this.values = ImmutableSet.<Integer>copyOf(values);
             this.name = name;
         }
         
-        @Override
-        public String toString() {
+        public String getName() {
             
             return this.name;
         }
         
-        public int[] getValues() {
+        public Collection<Integer> getValues() {
             
             return this.values;
-        }
-    }
-    
-    private static Set<Integer> allowed = Sets.newHashSet();
-    
-    public static final String CONFIG_PARTICLES = "particles";
-    
-    public static void syncConfig() {
-        
-        for (ParticleSet set : ParticleSet.values()) {
-            
-            if (Main.config.get(CONFIG_PARTICLES, set.toString(), true)
-                    .getBoolean()) {
-                
-                for (int id : set.getValues()) {
-                    
-                    allowed.add(id);
-                }
-            }
         }
     }
 }

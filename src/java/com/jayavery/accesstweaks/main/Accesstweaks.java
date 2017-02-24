@@ -18,16 +18,16 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-    @Mod(modid = Main.MODID, name = Main.NAME, version = Main.VERSION,
+    @Mod(modid = Accesstweaks.MODID, name = Accesstweaks.NAME, version = Accesstweaks.VERSION,
          guiFactory = "com.jayavery.accesstweaks.utilities.ConfigGuiFactory")
-    public class Main {
+    public class Accesstweaks {
 
     public static final String MODID = "accesstweaks";
     public static final String NAME = "AccessTweaks";
     public static final String VERSION = "2.0-mc1.11";
 
     @Instance
-    public static Main instance = new Main();
+    public static Accesstweaks instance = new Accesstweaks();
 
     public static Configuration config;
 
@@ -72,12 +72,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
         }
     }
 
-    public static void syncConfig() {
+    /** Syncs the config for all modules. */
+    private static void syncConfig() {
 
-        Particles.syncConfig();
-        Portals.syncConfig();
-        Sounds.syncConfig();
-        Maxbright.syncConfig();
+        Particles.syncConfig(config);
+        Portals.syncConfig(config);
+        Sounds.syncConfig(config);
+        Maxbright.syncConfig(config);
                 
         if (config.hasChanged()) {
 

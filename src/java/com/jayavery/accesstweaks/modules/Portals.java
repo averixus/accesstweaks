@@ -1,13 +1,27 @@
 package com.jayavery.accesstweaks.modules;
 
-import com.jayavery.accesstweaks.main.Main;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
+/** Module to control visual effects of Nether portals. */
 public class Portals {
     
+    /** Whether to show the visual effects of Nether portals. */
+    private static boolean portalEffects = true;
+    
+    /** Config key for this module. */
+    public static final String CONFIG_PORTALS = "portals";
+    
+    /** Updates settings of this module from the config. */
+    public static void syncConfig(Configuration config) {
+        
+        portalEffects = config.get(CONFIG_PORTALS, "portalEffects", true)
+                .getBoolean();
+    }
 
+    /** Cancels Nether portal visual effects according to setting. */
     @SubscribeEvent
     public void playerTick(PlayerTickEvent event) {
         
@@ -25,15 +39,5 @@ public class Portals {
                 player.timeInPortal = 0;
             }
         }
-    }
-    
-    public static boolean portalEffects = true;
-    
-    public static final String CONFIG_PORTALS = "portals";
-    
-    public static void syncConfig() {
-        
-        portalEffects = Main.config.get(CONFIG_PORTALS, "portalEffects", true)
-                .getBoolean();
     }
 }
