@@ -1,16 +1,10 @@
-[
-{
+[{
   "modid": "accesstweaks",
   "name": "AccessTweaks",
   "description": "Tweaks to improve accessibility and usability.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "https://github.com/JayAvery/accesstweaks",
-  "updateUrl": "",
-  "authorList": ["Jay Avery"],
-  "credits": "By Jay Avery",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
-}
-]
+  "version": "3.0.0",
+  "mcversion": "1.12-14.21.1.2387",
+  "logoFile": "assets/accesstweaks/textures/logo.jpg",
+  "url": "https://minecraft.curseforge.com/projects/accesstweaks",
+  "authorList": ["Jay Avery"]
+}]

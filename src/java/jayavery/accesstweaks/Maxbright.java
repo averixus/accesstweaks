@@ -1,13 +1,21 @@
-package com.jayavery.accesstweaks.modules;
+/*******************************************************************************
+ * Copyright (C) 2016 Jay Avery
+ * 
+ * This file is part of AccessTweaks. AccessTweaks is free software: distributed
+ * under the GNU Affero General Public License (<http://www.gnu.org/licenses/>).
+ ******************************************************************************/
+package jayavery.accesstweaks;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
 
 /** Module to override brightness of each dimension. */
+@EventBusSubscriber
 public class Maxbright {
     
     /** Whether to display the Nether at max brightness. */
@@ -38,7 +46,7 @@ public class Maxbright {
     
     /** Updates the brightness when the player first joins. */
     @SubscribeEvent
-    public void joinWorld(EntityJoinWorldEvent event){
+    public static void joinWorld(EntityJoinWorldEvent event){
 
         if (event.getEntity() == Minecraft.getMinecraft().player) {
 
@@ -49,15 +57,14 @@ public class Maxbright {
     
     /** Updates the brightness when the player changes dimension. */
     @SubscribeEvent
-    public void changeDimension(PlayerChangedDimensionEvent event) {
+    public static void changeDimension(PlayerChangedDimensionEvent event) {
 
         updateBrightness(event.toDim);
     }
     
     /** Sets the brightness according to the settings and dimension. */
     private static void updateBrightness(int id) {
-        System.out.println("updating brightness for id " + id);
-        System.out.println("netherbright? " + netherBright);
+
         GameSettings settings = Minecraft.getMinecraft().gameSettings;
         
         if (id == -1) {
